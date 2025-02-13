@@ -2,7 +2,6 @@ package com.company.users.dto;
 
 import com.company.users.constraint.PasswordConstraint;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data

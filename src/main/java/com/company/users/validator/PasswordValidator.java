@@ -9,6 +9,7 @@ import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
 import org.passay.IllegalRegexRule;
 import org.passay.LengthRule;
+import org.passay.PasswordData;
 
 public class PasswordValidator implements ConstraintValidator<PasswordConstraint, String> {
 
@@ -34,6 +35,6 @@ public class PasswordValidator implements ConstraintValidator<PasswordConstraint
         new AllowedRegexRule("^[A-Za-z0-9]+$")
     ));
 
-    return false;
+    return passwordValidator.validate(new PasswordData(s)).isValid();
   }
 }
