@@ -1,4 +1,4 @@
-package com.company.users.entity;
+package com.company.users.model;
 
 public class Phone {
 

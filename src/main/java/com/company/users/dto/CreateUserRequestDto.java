@@ -1,22 +1,19 @@
 package com.company.users.dto;
 
-import com.company.users.constraint.EmailConstraint;
 import com.company.users.constraint.PasswordConstraint;
 import javax.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-public class CreateUserRequestDto {
-
-  private String name;
-
-  @NotBlank
-  @EmailConstraint
-  private String email;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateUserRequestDto extends BaseUserDto {
+  
   @NotBlank
   @PasswordConstraint
   private String password;
-
-  private PhoneDto[] phones;
 }

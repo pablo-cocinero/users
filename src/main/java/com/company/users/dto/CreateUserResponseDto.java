@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2Res
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserResponseDto extends CreateUserRequestDto {
+public class CreateUserResponseDto extends BaseUserDto {
   
   private UUID id;
-  private LocalDateTime dateTime;
+  private LocalDateTime createdDate;
   private LocalDateTime lastLogin;
   private Jwt accessToken;
   private boolean isActive;
