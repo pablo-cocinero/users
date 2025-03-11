@@ -18,5 +18,5 @@ public class CreateUserResponseDto extends BaseUserDto {
   private LocalDateTime createdDate;
   private LocalDateTime lastLogin;
   private Jwt accessToken;
-  private boolean isActive;
+  private Boolean isActive;
 }

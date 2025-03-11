@@ -2,12 +2,14 @@ package com.company.users.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +37,7 @@ public class User implements Serializable {
   private String email;
   @Column(name = "password", nullable = false)
   private String password;
-  @OneToMany()
-  private Phone[] phones;
+  @OneToMany(orphanRemoval=true)
+  @JoinColumn(name="id")
+  private Set<Phone> phones;
 }

@@ -13,17 +13,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+  private final UserRepository userRepository;
+  private final UserMapper userMapper;
+
   @Autowired
-  private UserRepository userRepository;
-  @Autowired
-  private UserMapper mapper;
+  public UserService(final UserRepository userRepository, final UserMapper userMapper) {
+    this.userRepository = userRepository;
+    this.userMapper = userMapper;
+  }
 
   public CreateUserResponseDto signUp(CreateUserRequestDto userRequestDto) {
-    final User newUser = mapper.toEntity(userRequestDto);
+    final User newUser = userMapper.toEntity(userRequestDto);
     //Fill other attributes
     FillEntityAttributes(newUser);
     final User savedUser = userRepository.save(newUser);
-    return mapper.toResponseDto(savedUser);
+    return userMapper.toResponseDto(savedUser);
   }
 
   private void FillEntityAttributes(User newUser) {
