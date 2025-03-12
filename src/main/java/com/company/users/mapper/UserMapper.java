@@ -1,7 +1,7 @@
 package com.company.users.mapper;
 
 import com.company.users.dto.CreateUserRequestDto;
-import com.company.users.dto.CreateUserResponseDto;
+import com.company.users.dto.UserResponseDto;
 import com.company.users.model.User;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -30,5 +30,5 @@ public interface UserMapper {
   @Mapping(source = "email", target = "email")
   @Mapping(source = "phones", target = "phones")
   @Mapping(target = "accessToken", ignore = true)
-  CreateUserResponseDto toResponseDto(User user);
+  UserResponseDto toResponseDto(User user);
 }

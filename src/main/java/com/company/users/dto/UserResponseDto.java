@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2Res
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserResponseDto extends BaseUserDto {
+public class UserResponseDto extends BaseUserDto {
   
   private UUID id;
   private LocalDateTime createdDate;

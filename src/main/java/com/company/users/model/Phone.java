@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "phones")
 @Getter
 @Setter
 public class Phone {
@@ -16,11 +16,11 @@ public class Phone {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
-  private long id;
+  private Long id;
   @Column(name = "number")
-  private long number;
+  private Long number;
   @Column(name = "city_code")
-  private int cityCode;
+  private Integer cityCode;
   @Column(name = "country_code")
   private String countryCode;
 }

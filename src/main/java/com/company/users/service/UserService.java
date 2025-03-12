@@ -1,7 +1,7 @@
 package com.company.users.service;
 
 import com.company.users.dto.CreateUserRequestDto;
-import com.company.users.dto.CreateUserResponseDto;
+import com.company.users.dto.UserResponseDto;
 import com.company.users.mapper.UserMapper;
 import com.company.users.model.User;
 import com.company.users.repository.UserRepository;
@@ -22,9 +22,8 @@ public class UserService {
     this.userMapper = userMapper;
   }
 
-  public CreateUserResponseDto signUp(CreateUserRequestDto userRequestDto) {
+  public UserResponseDto signUp(CreateUserRequestDto userRequestDto) {
     final User newUser = userMapper.toEntity(userRequestDto);
-    //Fill other attributes
     FillEntityAttributes(newUser);
     final User savedUser = userRepository.save(newUser);
     return userMapper.toResponseDto(savedUser);
@@ -36,5 +35,10 @@ public class UserService {
     newUser.setLastLogin(newUser.getCreated());
     newUser.setIsActive(true);
     //encryptar pass
+  }
+
+  public UserResponseDto logIn(UUID uuid) {
+      //TODO implement
+      return new UserResponseDto();
   }
 }

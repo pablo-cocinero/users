@@ -2,8 +2,10 @@ package com.company.users.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +39,8 @@ public class User implements Serializable {
   private String email;
   @Column(name = "password", nullable = false)
   private String password;
-  @OneToMany(orphanRemoval=true)
-  @JoinColumn(name="id")
-  private Set<Phone> phones;
+
+  @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+  @JoinColumn(name = "id")
+  private Set<Phone> phones = new HashSet<>();
 }
