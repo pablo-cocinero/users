@@ -26,9 +26,9 @@ public class UsersController
   public ResponseEntity<UserResponseDto> signUp(@RequestBody @Validated CreateUserRequestDto userRequestDto) {
     return new ResponseEntity<>(userService.signUp(userRequestDto), HttpStatus.CREATED);
   }
-
-  @GetMapping(value = "logIn/{userId}", produces = APPLICATION_JSON_VALUE)
-  public ResponseEntity<UserResponseDto> logIn(@PathVariable("userId") UUID uuid) {
+  
+  @GetMapping(value = "/logIn/{userId}", produces = APPLICATION_JSON_VALUE)
+  public ResponseEntity<UserResponseDto> logIn(@PathVariable("userId") String uuid) {
       return new ResponseEntity<>(userService.logIn(uuid), HttpStatus.ACCEPTED);
   }
 }

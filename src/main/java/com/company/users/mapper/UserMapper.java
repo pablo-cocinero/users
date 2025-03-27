@@ -22,7 +22,7 @@ public interface UserMapper {
   @Mapping(target = "isActive", ignore = true)
   User toEntity(CreateUserRequestDto userRequestDto);
 
-  @Mapping(source = "uuid", target = "id")
+  @Mapping(source = "uuid", target = "uuid")
   @Mapping(source = "created", target = "createdDate")
   @Mapping(source = "lastLogin", target = "lastLogin")
   @Mapping(source = "isActive", target = "isActive")

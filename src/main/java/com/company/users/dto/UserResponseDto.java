@@ -1,12 +1,10 @@
 package com.company.users.dto;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 
 @Getter
 @Setter
@@ -14,9 +12,9 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2Res
 @NoArgsConstructor
 public class UserResponseDto extends BaseUserDto {
   
-  private UUID id;
+  private String uuid;
   private LocalDateTime createdDate;
   private LocalDateTime lastLogin;
-  private Jwt accessToken;
+  private String accessToken;
   private Boolean isActive;
 }

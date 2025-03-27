@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +25,7 @@ public class User implements Serializable {
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
   @Column(name = "uuid", nullable = false, unique = true, length = 64)
-  private UUID uuid;
+  private String uuid;
   @Column(name = "created_time", nullable = false, updatable = false)
   private LocalDateTime created;
   @Column(name = "last_login", nullable = false)
