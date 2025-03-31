@@ -1,6 +1,7 @@
 package com.company.users.dto;
 
 import com.company.users.constraint.EmailConstraint;
+import com.company.users.constraint.PasswordConstraint;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -21,6 +22,8 @@ public class BaseUserDto {
   @EmailConstraint
   private String email;
 
+  @NotBlank
+  @PasswordConstraint
   private String password;
 
   private PhoneDto[] phones;

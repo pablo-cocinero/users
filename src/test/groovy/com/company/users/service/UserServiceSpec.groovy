@@ -1,7 +1,9 @@
 package com.company.users.service
 
+import com.company.users.dto.BaseUserDto
+
 import java.time.LocalDateTime;
-import com.company.users.dto.CreateUserRequestDto
+
 import com.company.users.dto.UserResponseDto
 import com.company.users.exception.UserNotFoundException
 import com.company.users.mapper.UserMapper
@@ -20,7 +22,7 @@ class UserServiceSpec extends Specification {
 
     def "signUp should create a new user, save to repository, and return UserResponseDto with token"() {
         given:
-        def createUserRequestDto = new CreateUserRequestDto(email: "test@example.com", password: "password123")
+        def createUserRequestDto = new BaseUserDto(email: "test@example.com", password: "password123")
         def user = new User(email: createUserRequestDto.email, password: "encodedPassword")
         def savedUser = new User(uuid: "123e4567-e89b-12d3-a456-426614174000", isActive: true, created: LocalDateTime.now(), lastLogin: LocalDateTime.now(), email: "test@example.com")
         def userResponseDto = new UserResponseDto(email: user.email, accessToken: "dummyJwtToken")

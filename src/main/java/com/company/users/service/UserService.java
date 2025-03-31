@@ -1,6 +1,6 @@
 package com.company.users.service;
 
-import com.company.users.dto.CreateUserRequestDto;
+import com.company.users.dto.BaseUserDto;
 import com.company.users.dto.UserResponseDto;
 import com.company.users.exception.UserNotFoundException;
 import com.company.users.mapper.UserMapper;
@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
     this.jwtService = jwtService;
   }
 
-  public UserResponseDto signUp(CreateUserRequestDto userRequestDto) {
+  public UserResponseDto signUp(BaseUserDto userRequestDto) {
     final User newUser = userMapper.toEntity(userRequestDto);
     FillEntityAttributes(newUser, userRequestDto);
     final User savedUser = userRepository.save(newUser);
@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
     return responseDto;
   }
 
-  private void FillEntityAttributes(User newUser, CreateUserRequestDto userRequestDto) {
+  private void FillEntityAttributes(User newUser, BaseUserDto userRequestDto) {
     newUser.setUuid(UUID.randomUUID().toString());
     newUser.setCreated(LocalDateTime.now());
     newUser.setLastLogin(newUser.getCreated());

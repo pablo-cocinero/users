@@ -2,10 +2,10 @@ package com.company.users.controller;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-import com.company.users.dto.CreateUserRequestDto;
+import com.company.users.dto.BaseUserDto;
 import com.company.users.dto.UserResponseDto;
 import com.company.users.service.UserService;
-import java.util.UUID;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class UsersController
   private UserService userService;
 
   @PostMapping(value = "/sign-up", produces = APPLICATION_JSON_VALUE)
-  public ResponseEntity<UserResponseDto> signUp(@RequestBody @Validated CreateUserRequestDto userRequestDto) {
+  public ResponseEntity<UserResponseDto> signUp(@RequestBody @Validated BaseUserDto userRequestDto) {
     return new ResponseEntity<>(userService.signUp(userRequestDto), HttpStatus.CREATED);
   }
   

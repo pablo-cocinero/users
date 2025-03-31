@@ -1,6 +1,6 @@
 package com.company.users.mapper;
 
-import com.company.users.dto.CreateUserRequestDto;
+import com.company.users.dto.BaseUserDto;
 import com.company.users.dto.UserResponseDto;
 import com.company.users.model.User;
 import org.mapstruct.InjectionStrategy;
@@ -20,7 +20,7 @@ public interface UserMapper {
   @Mapping(target = "created", ignore = true)
   @Mapping(target = "lastLogin", ignore = true)
   @Mapping(target = "isActive", ignore = true)
-  User toEntity(CreateUserRequestDto userRequestDto);
+  User toEntity(BaseUserDto userRequestDto);
 
   @Mapping(source = "uuid", target = "uuid")
   @Mapping(source = "created", target = "createdDate")
