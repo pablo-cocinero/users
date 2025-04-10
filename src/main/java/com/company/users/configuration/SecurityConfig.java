@@ -26,7 +26,12 @@ public class SecurityConfig {
         .httpBasic().disable()
         .formLogin().disable()
         .authorizeRequests()
-        .antMatchers("/sign-up", "/h2-console/*").permitAll()
+        .antMatchers("/sign-up",
+                      "/h2-console/*",
+                      "/v3/api-docs/**",
+                      "/swagger-ui/**",
+                      "/swagger-ui.html"
+        ).permitAll()
         .anyRequest().authenticated()
         .and()
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

@@ -1,0 +1,42 @@
+@startuml "LogIn User fetching"
+
+title Sequence Diagram: LogIn
+
+actor RestClient
+participant JwtAuthenticationFilter
+participant SecurityContextHolder
+participant JwtService
+participant UserController
+participant UserService
+participant UserMapper
+participant UserRepository
+database Database
+
+RestClient -> JwtAuthenticationFilter: GET /logIn/{userId} (credentials)
+JwtAuthenticationFilter -> JwtService: validateToken(Jwt)
+JwtService --> JwtAuthenticationFilter: valid or invalid
+alt Invalid Jwt
+    JwtAuthenticationFilter -> RestClient: Unauthorized
+else Valid Jwt
+     JwtAuthenticationFilter -> UserService: loadUserByUsername(email)
+     UserService -> UserRepository: findByEmail(email)
+     UserRepository -> Database: Query to get User
+     Database --> UserRepository: User
+     UserRepository --> UserService: User Entity 
+     UserService --> JwtAuthenticationFilter: userDetails
+     JwtAuthenticationFilter -> SecurityContextHolder: setAuthentication(authentication)
+     JwtAuthenticationFilter -> UserController: logIn(user Id)
+     UserController -> UserService: logIn(user Id)
+     UserService -> UserRepository: findByUserId(user Id)
+     UserRepository -> Database: Query to get User
+     Database --> UserRepository: User
+     UserRepository --> UserService: User Entity 
+     UserService -> UserMapper: toResponseDTO(entity)
+     UserMapper --> UserService: UserResponseDTO
+     UserService -> JwtService: generateToken
+     JwtService --> UserService: Jwt
+     UserService --> UserController: UserDTO
+     UserController --> RestClient: returns UserDTO with new Jwt (JSON response)
+end
+
+@enduml

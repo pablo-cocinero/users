@@ -1,0 +1,43 @@
+@startuml "Users Components Diagram"
+
+title Users Component Diagram
+
+package "API and Security Layer" {
+    component [UserController]
+    component [SecurityFilter]
+}
+package "Service Layer" {
+    component [UserService]
+    component [JwtService]
+    component [UserMapper]
+    component [UserDto]
+}
+package "Persistence Layer" {
+    component [UserRepository]
+    component [User Entity]
+    component [Phone Entity]
+    component [PhoneRepository]
+}
+database "Database" {
+    component [H2 Database]
+}
+[UserController] --> [UserService]
+[SecurityFilter] --> [JwtService]
+[SecurityFilter] --> [UserController]
+[SecurityFilter] --> [UserService]
+[UserService] --> [UserRepository]
+[UserService] --> [JwtService]
+[UserService] --> [UserMapper]
+[UserMapper] --> [User Entity]
+[UserMapper] --> [UserDto]
+[UserRepository] --> [User Entity]
+[PhoneRepository] --> [Phone Entity]
+[UserRepository] --> [H2 Database]
+[PhoneRepository] --> [H2 Database]
+[User Entity] ..> [Phone Entity]
+[User Entity] ..> [H2 Database]
+[Phone Entity] ..> [H2 Database]
+[UserMapper] ..> [Phone Entity]
+[UserRepository] ..> [PhoneRepository]
+
+@enduml

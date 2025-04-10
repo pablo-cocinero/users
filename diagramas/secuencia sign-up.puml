@@ -1,0 +1,29 @@
+@startuml "SignUp User creation"
+
+title Sequence Diagram: Sign-up
+
+actor RestClient
+participant SecurityFilter
+participant JwtService
+participant UserController
+participant UserService
+participant UserMapper
+participant UserRepository
+database Database
+
+RestClient -> UserController: POST /sign-up
+UserController -> UserService: sign-up(UserDTO)
+UserService -> UserMapper: toEntity(UserDTO)
+UserMapper --> UserService: User Entity
+UserService -> UserRepository: save(User Entity)
+UserRepository -> Database: save user entity
+Database --> UserRepository: User Entity data
+UserRepository --> UserService: User Entity 
+UserService -> UserMapper: toUserDTO(entity)
+UserMapper --> UserService: UserDTO
+UserService -> JwtService: generateToken
+JwtService --> UserService: Jwt
+UserService --> UserController: UserDTO
+UserController --> RestClient: returns UserDTO with Jwt (JSON response)
+
+@enduml

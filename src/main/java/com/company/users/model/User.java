@@ -38,8 +38,6 @@ public class User implements Serializable {
   private String email;
   @Column(name = "password", nullable = false)
   private String password;
-
-  @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-  @JoinColumn(name = "id")
+  @OneToMany(mappedBy="user", orphanRemoval = true, cascade = CascadeType.ALL)
   private Set<Phone> phones = new HashSet<>();
 }

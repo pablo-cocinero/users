@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "1b5a441b-160c-4d92-bc0e-6cdc28cb20c4",
+		"name": "Challenge BCI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13011404"
+	},
+	"item": [
+		{
+			"name": "sign-up ok",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"example@testing.com\",\r\n\"password\": \"Password12\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up completo ok",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Juan\",\r\n\"email\": \"juan@domain.com\",\r\n\"password\": \"Juancito78\",\r\n\"phones\": [\r\n    {\r\n        \"number\": 4889763,\r\n        \"cityCode\": 198,\r\n        \"countryCode\": \"+54\" \r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up dos telefonos ok",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Juancito\",\r\n\"email\": \"juan@gmail.com\",\r\n\"password\": \"blabla98At\",\r\n\"phones\": [\r\n    {\r\n        \"number\": 3657894,\r\n        \"cityCode\": 264,\r\n        \"countryCode\": \"+54\" \r\n    },\r\n    {\r\n        \"number\": 4789512,\r\n        \"cityCode\": 223,\r\n        \"countryCode\": \"+54\" \r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/logIn/",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"logIn",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up fail password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"juan@live.com\",\r\n\"password\": \"Afg5hjk789\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up fail email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"juan@gonzales@gmail.com\",\r\n\"password\": \"Afg5hjk7\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
